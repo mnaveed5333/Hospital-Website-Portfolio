@@ -43,10 +43,7 @@ const About = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             About HospitalCare
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed">
-            At HospitalCare, we combine compassion, innovation, and expertise to deliver
-            exceptional healthcare services to our community for over 25 years.
-          </p>
+          
         </div>
       </section>
 

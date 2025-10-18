@@ -102,10 +102,7 @@ const Services = () => {
       <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Comprehensive healthcare services delivered by experienced medical professionals
-            using state-of-the-art technology and compassionate care.
-          </p>
+          
         </div>
       </section>
 

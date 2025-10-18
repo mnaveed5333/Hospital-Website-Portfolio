@@ -13,7 +13,7 @@ const NotFound = () => {
         </div>
 
         {/* Content */}
-        <h1 className="text-4xl font-bold text-primary-text mb-4">
+        <h1 className="text-4xl font-bold text-[#16A34A] mb-4">
           Page Not Found
         </h1>
         <p className="text-secondary-text text-lg mb-8">
@@ -40,7 +40,7 @@ const NotFound = () => {
 
         {/* Quick Links */}
         <div className="mt-12">
-          <h2 className="text-lg font-semibold text-primary-text mb-4">
+          <h2 className="text-lg font-semibold text-[#16A34A] mb-4">
             Popular Pages
           </h2>
           <div className="flex flex-wrap justify-center gap-4">

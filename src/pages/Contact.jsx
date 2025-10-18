@@ -67,10 +67,7 @@ const Contact = () => {
       <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-20">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-    <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90 leading-relaxed">
-      Have a question or need assistance? Our team is available 7 days a week to answer your inquiries and guide you through our healthcare services. 
-      
-    </p>
+    
   </div>
 </section>
 
