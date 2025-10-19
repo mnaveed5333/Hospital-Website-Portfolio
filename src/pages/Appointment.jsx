@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
 
@@ -47,10 +48,20 @@ const timeSlots = [
 ]
 
 const Appointment = () => {
+  const location = useLocation()
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', date: '', time: '', doctor: '', message: ''
   })
   const [errors, setErrors] = useState({})
+
+  useEffect(() => {
+    if (location.state?.selectedDoctor) {
+      setFormData(prev => ({
+        ...prev,
+        doctor: location.state.selectedDoctor.name
+      }))
+    }
+  }, [location.state])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -74,7 +85,14 @@ const Appointment = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (validateForm()) {
-      alert('Appointment booked successfully! We will contact you shortly.')
+      // Create WhatsApp message
+      const message = `Appointment Request:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nDoctor: ${formData.doctor}\nDate: ${formData.date}\nTime: ${formData.time}${formData.message ? `\nMessage: ${formData.message}` : ''}`
+      const whatsappUrl = `https://wa.me/923405542097?text=${encodeURIComponent(message)}`
+
+      // Open WhatsApp
+      window.open(whatsappUrl, '_blank')
+
+      // Reset form
       setFormData({ name: '', email: '', phone: '', date: '', time: '', doctor: '', message: '' })
     }
   }
@@ -82,24 +100,24 @@ const Appointment = () => {
   return (
     <div>
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-20">
+      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Book an Appointment</h1>
-          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Book an Appointment</h1>
+
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="min-h-screen bg-[#FFFFFF] py-16">
+      <section className="min-h-screen bg-[#FFFFFF] py-8 sm:py-12 lg:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#F8FAFC] rounded-xl shadow-lg border border-[#E5E7EB] p-10">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-[#F8FAFC] rounded-xl shadow-lg border border-[#E5E7EB] p-6 sm:p-8 lg:p-10">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <Input label="Full Name" name="name" value={formData.name} onChange={handleChange} placeholder="Enter your full name" error={errors.name} />
                 <Input label="Email Address" type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" error={errors.email} />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <Input label="Phone Number" type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" error={errors.phone} />
                 <div>
                   <label className="block text-sm font-medium text-[#0F172A] mb-2">Select Doctor</label>
@@ -118,7 +136,7 @@ const Appointment = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <Input label="Preferred Date" type="date" name="date" value={formData.date} onChange={handleChange} min={new Date().toISOString().split('T')[0]} error={errors.date} />
                 <div>
                   <label className="block text-sm font-medium text-[#0F172A] mb-2">Preferred Time</label>
@@ -136,14 +154,14 @@ const Appointment = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={4}
+                  rows={3} sm:rows={4}
                   placeholder="Describe your symptoms or reason for visit..."
-                  className="w-full px-3 py-2 border border-[#E5E7EB] rounded-lg bg-white text-[#0F172A] placeholder-[#16A34A] focus:outline-none focus:ring-2 focus:ring-[#16A34A] focus:border-transparent resize-none"
+                  className="w-full px-3 py-2 border border-[#E5E7EB] rounded-lg bg-white text-[#0F172A] placeholder-[#16A34A] focus:outline-none focus:ring-2 focus:ring-[#16A34A] focus:border-transparent resize-none text-sm sm:text-base"
                 />
               </div>
 
               <div className="flex justify-center pt-4">
-                <Button type="submit" size="lg" className="bg-[#16A34A] hover:bg-[#15803d] text-white font-semibold rounded-lg w-full">Book Appointment</Button>
+                <Button type="submit" size="lg" className="bg-[#16A34A] hover:bg-[#15803d] text-white font-semibold rounded-lg w-full text-sm sm:text-base">Book Appointment</Button>
               </div>
             </form>
           </div>

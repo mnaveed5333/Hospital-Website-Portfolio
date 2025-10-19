@@ -20,14 +20,14 @@ const Navbar = () => {
   return (
     <nav className="bg-[#FFFFFF] shadow-md border-b border-[#E5E7EB] sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-14 sm:h-16 items-center">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-[#16A34A] hover:text-[#15803d] transition-colors duration-200">
+          <Link to="/" className="text-xl sm:text-2xl font-bold text-[#16A34A] hover:text-[#15803d] transition-colors duration-200">
             HospitalCare
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}

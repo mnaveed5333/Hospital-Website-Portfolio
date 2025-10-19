@@ -56,17 +56,17 @@ const Doctors = () => {
     <div className="min-h-screen bg-[#FFFFFF]">
 
       {/* 🩺 Hero Section */}
-      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-20">
+      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Meet Our Doctors</h1>
-          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Meet Our Doctors</h1>
+
         </div>
       </section>
 
       {/* 👨‍⚕️ Doctors Grid */}
-      <section className="py-16 bg-[#FFFFFF]">
+      <section className="py-12 sm:py-16 bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {doctors.map((doctor, index) => (
               <DoctorCard key={index} doctor={doctor} />
             ))}
@@ -75,20 +75,20 @@ const Doctors = () => {
       </section>
 
       {/* 🏥 Specialties Section */}
-      <section className="py-16 bg-[#F8FAFC]">
+      <section className="py-12 sm:py-16 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-[#0F172A] mb-4">Medical Specialties</h2>
-          <p className="text-[#475569] max-w-2xl mx-auto mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-3 sm:mb-4">Medical Specialties</h2>
+          <p className="text-[#475569] text-sm sm:text-base max-w-2xl mx-auto mb-8 sm:mb-10">
             We offer comprehensive care across multiple medical specialties to meet all your healthcare needs.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {specialties.map(([title, desc], idx) => (
               <div
                 key={idx}
-                className="bg-white p-6 rounded-lg shadow-sm border border-[#E5E7EB] hover:shadow-md hover:border-[#16A34A] transition-all duration-300"
+                className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-[#E5E7EB] hover:shadow-md hover:border-[#16A34A] transition-all duration-300"
               >
-                <h3 className="font-semibold text-[#0F172A] mb-2">{title}</h3>
-                <p className="text-sm text-[#475569]">{desc}</p>
+                <h3 className="font-semibold text-[#0F172A] mb-1 sm:mb-2 text-sm sm:text-base">{title}</h3>
+                <p className="text-xs sm:text-sm text-[#475569]">{desc}</p>
               </div>
             ))}
           </div>

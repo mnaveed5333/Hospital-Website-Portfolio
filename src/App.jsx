@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import { AppointmentProvider } from './context/AppointmentContext'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import WhatsAppButton from './components/common/WhatsAppButton'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
@@ -31,6 +32,7 @@ const AppContent = () => {
         </Routes>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

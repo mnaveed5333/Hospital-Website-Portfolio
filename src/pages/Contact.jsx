@@ -64,23 +64,23 @@ const Contact = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-20">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-    
-  </div>
-</section>
+      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Contact Us</h1>
+
+        </div>
+      </section>
 
 
       {/* Contact Section */}
-      <div className="min-h-screen py-16 bg-[#FFFFFF]">
+      <div className="min-h-screen py-12 sm:py-16 bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Form */}
-            <div className="bg-[#F8FAFC] rounded-2xl shadow-sm border border-[#E5E7EB] p-8">
-              <h2 className="text-2xl font-bold text-[#0F172A] mb-6">Send us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-[#F8FAFC] rounded-2xl shadow-sm border border-[#E5E7EB] p-6 sm:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#0F172A] mb-4 sm:mb-6">Send us a Message</h2>
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <Input
                     label="Full Name"
                     name="name"
@@ -115,9 +115,9 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={6}
+                    rows={4} sm:rows={6}
                     placeholder="Please enter your message..."
-                    className={`w-full px-3 py-2 border rounded-lg bg-white placeholder-[#94A3B8] text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#16A34A] focus:border-transparent resize-none transition ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-[#E5E7EB]'}`}
+                    className={`w-full px-3 py-2 border rounded-lg bg-white placeholder-[#94A3B8] text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#16A34A] focus:border-transparent resize-none transition text-sm sm:text-base ${errors.message ? 'border-red-500 focus:ring-red-500' : 'border-[#E5E7EB]'}`}
                   />
                   {errors.message && (
                     <p className="mt-1 text-sm text-red-600">{errors.message}</p>
@@ -135,22 +135,22 @@ const Contact = () => {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-[#0F172A] mb-6">Get in Touch</h2>
-                <div className="space-y-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#0F172A] mb-4 sm:mb-6">Get in Touch</h2>
+                <div className="space-y-4 sm:space-y-6">
                   {contactInfo.map((info, index) => (
                     <div
                       key={index}
-                      className="flex items-start space-x-4 p-4 rounded-lg hover:bg-[#F8FAFC] border border-transparent hover:border-[#E5E7EB] transition"
+                      className="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg hover:bg-[#F8FAFC] border border-transparent hover:border-[#E5E7EB] transition"
                     >
-                      <div className="w-12 h-12 bg-[#16A34A]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <info.icon className="text-[#16A34A]" size={20} />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#16A34A]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <info.icon className="text-[#16A34A]" size={16} sm:size={20} />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-[#0F172A] mb-1">{info.title}</h3>
+                        <h3 className="font-semibold text-[#0F172A] mb-1 text-sm sm:text-base">{info.title}</h3>
                         {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-[#475569]">{detail}</p>
+                          <p key={idx} className="text-[#475569] text-xs sm:text-sm">{detail}</p>
                         ))}
                       </div>
                     </div>
@@ -161,13 +161,13 @@ const Contact = () => {
           </div>
 
           {/* Emergency Contact */}
-          <div className="mt-12 bg-red-50 border border-red-200 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-              <FaPhone className="text-red-600" size={20} />
+          <div className="mt-8 sm:mt-12 bg-red-50 border border-red-200 rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-100 rounded-full flex items-center justify-center">
+              <FaPhone className="text-red-600" size={16} sm:size={20} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-red-800">Emergency?</h3>
-              <p className="text-red-700">
+              <h3 className="text-base sm:text-lg font-semibold text-red-800">Emergency?</h3>
+              <p className="text-red-700 text-sm sm:text-base">
                 For medical emergencies, please call <span className="font-bold">(555) 911-0000</span> immediately or visit our emergency department.
               </p>
             </div>

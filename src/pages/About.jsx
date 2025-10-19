@@ -38,35 +38,35 @@ const About = () => {
   return (
     <div className="min-h-screen bg-[#FFFFFF]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-20">
+      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             About HospitalCare
           </h1>
-          
+
         </div>
       </section>
 
       {/* About Us Section */}
-      <section className="py-16 bg-[#FFFFFF]">
+      <section className="py-12 sm:py-16 bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0F172A] mb-4 sm:mb-6 text-center lg:text-left">
                 Welcome to HospitalCare
               </h2>
-              <p className="text-[#475569] text-lg leading-relaxed mb-6">
+              <p className="text-[#475569] text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
                 HospitalCare has been a cornerstone of healthcare excellence in Pakistan for over 25 years.
                 Our commitment to providing world-class medical services has made us a trusted name in
                 healthcare, serving thousands of patients with compassion, expertise, and innovation.
               </p>
-              <p className="text-[#475569] text-lg leading-relaxed mb-6">
+              <p className="text-[#475569] text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
                 We combine state-of-the-art medical technology with a patient-centered approach,
                 ensuring that every individual receives personalized care tailored to their unique needs.
                 Our team of highly qualified medical professionals works tirelessly to deliver outstanding
                 health outcomes and improve the quality of life for our patients.
               </p>
-              <p className="text-[#475569] text-lg leading-relaxed">
+              <p className="text-[#475569] text-base sm:text-lg leading-relaxed">
                 At HospitalCare, we believe that healthcare is not just about treating illnesses,
                 but about building lasting relationships with our patients and their families,
                 fostering trust, and promoting wellness in our community.
@@ -85,18 +85,18 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-[#F8FAFC]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 text-center">
             {stats.map((stat, index) => (
               <div key={index} className="group">
-                <div className="w-16 h-16 bg-[#16A34A]/10 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-[#16A34A]/20 transition">
-                  <stat.icon className="text-[#16A34A]" size={28} />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#16A34A]/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-5 group-hover:bg-[#16A34A]/20 transition">
+                  <stat.icon className="text-[#16A34A]" size={20} sm:size={28} />
                 </div>
-                <h3 className="text-3xl font-bold text-[#0F172A] mb-2">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-1 sm:mb-2">
                   {stat.value}
                 </h3>
-                <p className="text-[#475569] text-base">{stat.label}</p>
+                <p className="text-[#475569] text-sm sm:text-base">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -107,26 +107,26 @@ const About = () => {
       
 
       {/* Our Values Section */}
-      <section className="py-20 bg-[#F8FAFC]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-3 sm:mb-4">
               Our Core Values
             </h2>
-            <p className="text-[#475569] max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#475569] text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
               These values guide our mission to provide safe, trusted, and patient-centered healthcare every single day.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {values.map((value, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm border border-[#E5E7EB] hover:shadow-lg hover:border-[#16A34A]/30 transition"
+                className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-[#E5E7EB] hover:shadow-lg hover:border-[#16A34A]/30 transition"
               >
-                <h3 className="text-xl font-semibold text-[#0F172A] mb-3">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#0F172A] mb-2 sm:mb-3">
                   {value.title}
                 </h3>
-                <p className="text-[#475569] leading-relaxed">{value.description}</p>
+                <p className="text-[#475569] text-sm sm:text-base leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
@@ -134,12 +134,12 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#16A34A]">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#16A34A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
             Your Health, Our Priority
           </h2>
-          <p className="text-white text-lg mb-8 max-w-2xl mx-auto opacity-90 leading-relaxed">
+          <p className="text-white text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto opacity-90 leading-relaxed">
             Take the first step toward better health. Book your appointment today and experience exceptional care from trusted medical experts.
           </p>
           <Link

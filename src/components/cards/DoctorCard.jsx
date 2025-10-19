@@ -1,19 +1,22 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { FaUserMd } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import Button from '../common/Button'
 
 const DoctorCard = ({ doctor }) => {
   const { name, specialty, degree, image } = doctor
+  const navigate = useNavigate()
+
+  const handleAppointmentClick = () => {
+    navigate('/appointment', { state: { selectedDoctor: doctor } })
+  }
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.05, y: -4 }}
-      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-      className="group bg-[#FFFFFF] rounded-2xl shadow-md border border-[#E5E7EB] overflow-hidden hover:shadow-lg transition-all duration-300 hover:bg-[#16A34A]"
+    <div className="bg-[#FFFFFF] rounded-2xl shadow-md border border-[#E5E7EB] overflow-hidden"
     >
-      <div className="p-6 flex flex-col items-center text-center transition-colors duration-300">
+      <div className="p-4 sm:p-6 flex flex-col items-center text-center">
         {/* Doctor Image */}
-        <div className="w-24 h-24 rounded-full border-4 border-[#16A34A] overflow-hidden mb-4 shadow-sm group-hover:border-white transition-colors duration-300">
+        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-[#16A34A] overflow-hidden mb-3 sm:mb-4 shadow-sm">
           {image ? (
             <img
               src={image}
@@ -21,27 +24,38 @@ const DoctorCard = ({ doctor }) => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="flex items-center justify-center h-full text-[#16A34A] text-4xl bg-white group-hover:text-[#16A34A] transition-colors duration-300">
+            <div className="flex items-center justify-center h-full text-[#16A34A] text-3xl sm:text-4xl bg-white">
               <FaUserMd />
             </div>
           )}
         </div>
 
         {/* Doctor Info */}
-        <h3 className="text-xl font-semibold text-[#0F172A] mb-1 group-hover:text-white transition-colors duration-300">
+        <h3 className="text-lg sm:text-xl font-semibold text-[#0F172A] mb-1">
           {name}
         </h3>
-        <p className="text-[#16A34A] font-medium text-base mb-1 group-hover:text-[#06B6D4] transition-colors duration-300">
+        <p className="text-[#16A34A] font-medium text-sm sm:text-base mb-1">
           {specialty}
         </p>
-        <p className="text-[#475569] text-sm group-hover:text-[#F8FAFC] transition-colors duration-300">
+        <p className="text-[#475569] text-xs sm:text-sm">
           {degree}
         </p>
 
+        {/* Appointment Button */}
+        <div className="mt-3 sm:mt-4">
+          <Button
+            onClick={handleAppointmentClick}
+            size="sm"
+            className="bg-[#16A34A] hover:bg-[#15803d] text-white font-medium rounded-lg px-3 sm:px-4 py-2 transition-colors duration-300 text-sm sm:text-base"
+          >
+            Book Appointment
+          </Button>
+        </div>
+
         {/* Accent Line */}
-        <div className="mt-4 w-12 h-1 rounded-full bg-[#06B6D4] transition-colors duration-300 group-hover:bg-white"></div>
+        <div className="mt-3 sm:mt-4 w-10 sm:w-12 h-1 rounded-full bg-[#16A34A]"></div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 

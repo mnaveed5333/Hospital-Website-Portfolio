@@ -13,14 +13,14 @@ const Home = () => {
 
       {/* CTA Section */}
       <section
-        className="py-16"
+        className="py-12 sm:py-16"
         style={{ background: '#16A34A' }} /* Primary background */
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
             Ready to Get Started?
           </h2>
-          <p className="text-white text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
             Book an appointment today and take the first step towards better health.
             Our experienced medical professionals are here to help you.
           </p>

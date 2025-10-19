@@ -99,17 +99,17 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-[#FFFFFF]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-20">
+      <section className="bg-gradient-to-r from-[#16A34A] to-[#16A34A] text-white py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Our Services</h1>
+
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 bg-[#F8FAFC]">
+      <section className="py-12 sm:py-16 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {services.map((service, index) => (
               <ServiceCard key={index} service={service} />
             ))}
@@ -118,15 +118,15 @@ const Services = () => {
       </section>
 
       {/* Emergency Services */}
-      <section className="py-16 bg-[#FFFFFF]">
+      <section className="py-12 sm:py-16 bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#0F172A] mb-4">Emergency Services</h2>
-            <p className="text-[#475569] max-w-2xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-3 sm:mb-4">Emergency Services</h2>
+            <p className="text-[#475569] text-sm sm:text-base max-w-2xl mx-auto">
               24/7 emergency care available for critical situations requiring immediate medical attention.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
               { icon: FaHeartbeat, title: 'Heart Attack', desc: 'Immediate cardiac care' },
               { icon: FaBrain, title: 'Stroke', desc: 'Rapid neurological intervention' },
@@ -135,13 +135,13 @@ const Services = () => {
             ].map(({ icon: Icon, title, desc }, idx) => (
               <div
                 key={idx}
-                className="bg-[#FFFFFF] p-6 rounded-xl shadow-sm border border-[#E5E7EB] text-center hover:shadow-md transition-shadow"
+                className="bg-[#FFFFFF] p-4 sm:p-6 rounded-xl shadow-sm border border-[#E5E7EB] text-center hover:shadow-md transition-shadow"
               >
-                <div className="w-14 h-14 bg-[#16A34A] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon className=" text-[#F8FAFC]" size={24} />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#16A34A] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Icon className=" text-[#F8FAFC]" size={20} sm:size={24} />
                 </div>
-                <h3 className="font-semibold text-[#0F172A] mb-2">{title}</h3>
-                <p className="text-sm text-[#475569]">{desc}</p>
+                <h3 className="font-semibold text-[#0F172A] mb-1 sm:mb-2 text-sm sm:text-base">{title}</h3>
+                <p className="text-xs sm:text-sm text-[#475569]">{desc}</p>
               </div>
             ))}
           </div>
