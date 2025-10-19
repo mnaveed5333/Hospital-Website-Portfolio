@@ -59,7 +59,7 @@ const TestimonialSection = () => {
   const [visibleCount, setVisibleCount] = useState(window.innerWidth < 768 ? 1 : 3)
   const timeoutRef = useRef(null)
   const containerRef = useRef(null)
-  const rotateMs = 5000
+  const rotateMs = 2000
 
   const { contextSafe } = useGSAP()
 
@@ -174,19 +174,6 @@ const TestimonialSection = () => {
             ))}
           </div>
 
-          {/* ✅ Navigation Buttons */}
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#16A34A] text-white p-2 rounded-full shadow-md hover:bg-[#15803d] transition"
-          >
-            <FaChevronLeft size={18} />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#16A34A] text-white p-2 rounded-full shadow-md hover:bg-[#15803d] transition"
-          >
-            <FaChevronRight size={18} />
-          </button>
         </div>
       </div>
     </section>
