@@ -87,7 +87,7 @@ const Appointment = () => {
     if (validateForm()) {
       // Create WhatsApp message
       const message = `Appointment Request:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nDoctor: ${formData.doctor}\nDate: ${formData.date}\nTime: ${formData.time}${formData.message ? `\nMessage: ${formData.message}` : ''}`
-      const whatsappUrl = `https://wa.me/923405542097?text=${encodeURIComponent(message)}`
+      const whatsappUrl = `https://wa.me/923012345678?text=${encodeURIComponent(message)}`
 
       // Open WhatsApp
       window.open(whatsappUrl, '_blank')
