@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { FaStar, FaQuoteLeft } from 'react-icons/fa'
+import { FaStar, FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const TestimonialSection = () => {
   const testimonials = [
@@ -54,16 +56,58 @@ const TestimonialSection = () => {
   ]
 
   const [startIndex, setStartIndex] = useState(0)
-  const visibleCount = window.innerWidth < 768 ? 1 : 3
+  const [visibleCount, setVisibleCount] = useState(window.innerWidth < 768 ? 1 : 3)
   const timeoutRef = useRef(null)
-  const rotateMs = 4000
+  const containerRef = useRef(null)
+  const rotateMs = 5000
 
+  const { contextSafe } = useGSAP()
+
+  // ✅ Animation function
+  const animateTestimonials = contextSafe(() => {
+    gsap.fromTo(
+      containerRef.current.children,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out'
+      }
+    )
+  })
+
+  // ✅ Auto slide
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
-      setStartIndex((prev) => (prev + 1) % testimonials.length)
+      handleNext()
     }, rotateMs)
     return () => clearTimeout(timeoutRef.current)
-  }, [startIndex, testimonials.length])
+  }, [startIndex])
+
+  // ✅ Responsive visible count
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCount(window.innerWidth < 768 ? 1 : 3)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    animateTestimonials()
+  }, [startIndex, visibleCount])
+
+  const handleNext = () => {
+    setStartIndex((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const handlePrev = () => {
+    setStartIndex((prev) =>
+      prev === 0 ? testimonials.length - 1 : (prev - 1) % testimonials.length
+    )
+  }
 
   const getVisibleTestimonials = () => {
     const result = []
@@ -74,7 +118,7 @@ const TestimonialSection = () => {
   }
 
   return (
-    <section className="py-12 sm:py-16 bg-[#FFFFFF] text-[#0F172A]">
+    <section className="py-12 sm:py-16 bg-[#FFFFFF] text-[#0F172A] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
@@ -87,8 +131,11 @@ const TestimonialSection = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="overflow-hidden">
-          <div className="flex gap-4 sm:gap-6 transition-transform duration-700 ease-in-out">
+        <div className="overflow-hidden relative">
+          <div
+            ref={containerRef}
+            className="flex gap-4 sm:gap-6 transition-transform duration-700 ease-in-out"
+          >
             {getVisibleTestimonials().map((t, idx) => (
               <div
                 key={idx}
@@ -96,13 +143,13 @@ const TestimonialSection = () => {
               >
                 <div>
                   <div className="mb-2 sm:mb-3">
-                    <FaQuoteLeft size={24} sm:size={28} style={{ color: 'rgba(6,182,212,0.15)' }} />
+                    <FaQuoteLeft size={24} style={{ color: 'rgba(6,182,212,0.15)' }} />
                   </div>
                   <div className="flex items-center mb-3 sm:mb-4">
                     {Array.from({ length: t.rating }).map((_, s) => (
                       <FaStar
                         key={s}
-                        size={12} sm:size={14}
+                        size={14}
                         style={{ color: '#16A34A' }}
                         className="mr-1"
                       />
@@ -117,16 +164,30 @@ const TestimonialSection = () => {
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4 border-2 border-[#16A34A] object-cover"
                   />
                   <div>
-                    <div className="font-semibold text-[#0F172A] text-sm sm:text-base">{t.name}</div>
+                    <div className="font-semibold text-[#0F172A] text-sm sm:text-base">
+                      {t.name}
+                    </div>
                     <div className="text-xs sm:text-sm text-[#475569]">{t.role}</div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
-        
+          {/* ✅ Navigation Buttons */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#16A34A] text-white p-2 rounded-full shadow-md hover:bg-[#15803d] transition"
+          >
+            <FaChevronLeft size={18} />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#16A34A] text-white p-2 rounded-full shadow-md hover:bg-[#15803d] transition"
+          >
+            <FaChevronRight size={18} />
+          </button>
+        </div>
       </div>
     </section>
   )

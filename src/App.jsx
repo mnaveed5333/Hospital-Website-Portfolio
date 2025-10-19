@@ -13,6 +13,7 @@ import Appointment from './pages/Appointment'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import useScrollTop from './hooks/useScrollTop'
+import { useGSAP } from '@gsap/react'
 
 const AppContent = () => {
   useScrollTop() // Scroll to top on route change
@@ -38,6 +39,9 @@ const AppContent = () => {
 }
 
 const App = () => {
+  useGSAP(()=>{
+    
+  })
   return (
     <ThemeProvider>
       <AppointmentProvider>
